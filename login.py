@@ -70,3 +70,46 @@ def insertUser(firstName, lastName, username, password):
         cursor.execute("INSERT INTO users VALUES (?,?,?,?)",
                        (firstName, lastName, username, password,))
         conn.commit()
+        return 1
+
+    else:
+        return 0
+
+
+def main():
+
+    while (True):
+
+        print("1. Create Account")
+        print("2. Login")
+        print("3. Exit")
+
+        ch = int(input("Your Choice: "))
+
+        if(ch == 1):
+            f_name = input("Enter your first name: ")
+            l_name = input("Enter your last name: ")
+            username = input("Enter username: ")
+            print("Remember: Having a strong password should be between 8-13 characters with some Upper Case, Digits, and special characters")
+            password = input("\nEnter Password: ")
+
+            r = insertUser(f_name, l_name, username, password)
+            if(r == 1):
+                loginUser(username, password)
+            else:
+                print("Username maybe taken or password is not strong")
+
+        elif(ch == 2):
+            username = input("Enter username: ")
+            password = input("Enter Password: ")
+
+            loginUser(username, password)
+
+        elif(ch == 3):
+            break
+
+        else:
+            print("Invalid Input")
+
+
+main()
