@@ -4,6 +4,7 @@ conn = sqlite3.connect('bookstore.db')
 
 c = conn.cursor()
 
+
 def add_book():
 
     isbn = input('ISBN:')
@@ -21,9 +22,8 @@ def remove_book():
     c.execute('''DELETE FROM BOOK as B WHERE ? = B.ISBN ''', (ISBN,))
 
 
-
-
 conn.commit()
+
 
 def main():
     while(True):
@@ -43,8 +43,10 @@ def main():
             c.execute(''' SELECT * FROM BOOK''')
             print(c.fetchall())
         elif(choice == 4):
-            break;
+            break
 
         else:
             print("invalid input")
+
+
 main()
