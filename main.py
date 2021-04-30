@@ -1,11 +1,12 @@
 import login
+import admin_login
 import sqlite3
 
 from sympy import true
 
-conn = sqlite3.connect('bookstore.db')
+#conn = sqlite3.connect('mypersonal.db')
 
-c = conn.cursor()
+#c = conn.cursor()
 
 
 def main():
@@ -31,28 +32,23 @@ def main():
     if (ch == 1):  # customer login
         username = input("Enter username: ")
         password = input("Enter Password: ")
-        login.loginUser(username, password)
-        #if (l == 0):
-         #   break
+        l = login.loginUser(username, password)
+       # if (l == 0):
+        #    break
         #else:
+         #   print("Wrong username / password")
 
 
 
     elif (ch == 2):  # admin login
-        print("*****************************************************************************************************")
-        print("**--------                                                                                 --------**")
-        print("**---                            Welcome to Online Book-Store                                   ---**")
-        print("**--------                              Admin Menu                                         --------**")
-        print("*****************************************************************************************************")
-        print()
-        print("                                      1. Add Book                                                    ")
-        print()
-        print("                                      2. Remove Book                                                 ")
-        print()
-        print("                                      3. Logout                                                      ")
-        print()
 
-        admin_choice = int(input("Enter your choice: "))
+        username = input("Enter username: ")
+        password = input("Enter Password: ")
+        l = admin_login.loginAdmin(username, password)
+        #if (l == 0):
+         #2
+        # break
+
         #
 
 
@@ -60,12 +56,19 @@ def main():
 
         f_name = input("Enter your first name: ")
         l_name = input("Enter your last name: ")
+        address = input("Enter street address: ")
+        city = input("Enter city: ")
+        state = input("Enter state: ")
+        zip = input("Enter zip: ")
+        phone = input("Enter phone: ")
+        e_mail = input("Enter email: ")
         username = input("Enter username: ")
         print(
             "Remember: Having a strong password should be between 8-13 characters with some Upper Case, Digits, and special characters")
         password = input("\nEnter Password: ")
 
         r = login.insertUser(username, password, f_name, l_name)
+        login.insertUserDetail(username, f_name, l_name, address, city, state, zip, phone, e_mail)
         # if (r == 1):
         #   login.loginUser(username, password)
         # else:
@@ -87,5 +90,6 @@ def main():
 
 
 
+
 main()
-conn.commit()
+#conn.commit()
