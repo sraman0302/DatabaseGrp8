@@ -71,35 +71,36 @@ def loginAdmin(username, password):
         print("**---                            Welcome to Online Book-Store                                   ---**")
         print("**--------                              Admin Menu                                         --------**")
         print("*****************************************************************************************************")
+        print("* ---------------                                                                   --------------- *")
+        print("* ------                               1. Add Book                                           ------ *")
+        print("* ---------------                                                                   --------------- *")
+        print("* ------                               2. Remove Book                                        ------ *")
+        print("* ---------------                                                                   --------------- *")
+        print("* ------                               3. Logout                                             ------ *")
+        print("* ---------------                                                                   --------------- *")
+        print("*****************************************************************************************************")
         print()
-        print("                                      1. Add Book                                                    ")
-        print()
-        print("                                      2. Remove Book                                                 ")
-        print()
-        print("                                      3. Logout                                                      ")
-        print()
-
-        admin_choice = int(input("Enter your choice: "))
-        while (admin_choice == 1):
-            add_remove_books.add_book()
-            out = input("Would you like to add more Books? (y/n): ")
-            if(out == "y"):
-                continue
-            else:
+        try:
+            admin_choice = int(input("Enter your choice: "))
+            while (admin_choice == 1):
+                add_remove_books.add_book()
+                out = input("Would you like to add more Books? (y/n): ")
+                if(out == "y"):
+                    continue
+                else:
+                    break
+            while (admin_choice == 2):
+                add_remove_books.remove_book()
+                out = input("Would you like to Remove more Books? (y/n): ")
+                if (out == "y"):
+                    continue
+                else:
+                    break
+            if (admin_choice == 3):
+                print("You have been successfully logged out")
                 break
-        while (admin_choice == 2):
-            add_remove_books.remove_book()
-            out = input("Would you like to Remove more Books? (y/n): ")
-            if (out == "y"):
-                continue
-            else:
-                break
-        if (admin_choice == 3):
-            print("You have been successfully logged out")
-            break
-    #else:
-     #   print('Incorrect username / password, please try again.')
-      #  return 0
+        except ValueError:
+            print("No such command exists. try again...")
 
 def insertAdmin(username, password, firstname, lastname):
     if (passwordCheck(password) and usernameCheck(username)):

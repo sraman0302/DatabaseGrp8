@@ -8,7 +8,7 @@ c = conn.cursor()
 
 c.execute( '''CREATE TABLE IF NOT EXISTS BOOK( [ISBN] TEXT PRIMARY KEY, [author] text, [year] integer, [title] text, [price] integer, [sub] text)''')
 
-# data for books table recieved from isbnsearch.org 
+
 c.execute('''INSERT INTO BOOK VALUES(60935464,'Harper Lee',1960,'To Kill a Mocking Bird',10, 'fiction')''')
 c.execute(''' INSERT INTO BOOK VALUES(452284236,'George Orwell',1950 ,'1984', 11.99, 'fiction')''')
 c.execute(''' INSERT INTO BOOK VALUES(9780544003415,'J.R.R Tolkien ',1955 ,'The Lord of the Rings', 13, 'novel' )''')
